@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Add Your Projects</title>
+    <meta name="description" content="Add your projects to showcase your work and achievements.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter builder-green">
+    <link rel="stylesheet" href="./styles.css" />
+    <div class="min-h-screen page-bg relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Add Your <span class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Projects</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Showcase your work and achievements. Add projects that demonstrate your skills and expertise.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Projects Input Section -->
+                    <div class="space-y-8">
+                        <!-- Add Project Form -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-2xl font-bold text-white font-poppins">Add Project</h3>
+                                <button id="newProjectBtn" class="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-semibold hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                                    <div class="flex items-center space-x-2">
+                                        <span>+</span>
+                                        <span>New Project</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div id="projectForm" class="space-y-6 hidden">
+                                <!-- Project Name -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Project Name *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="projectName"
+                                        placeholder="e.g., E-commerce Website, Mobile App"
+                                        class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                    />
+                                </div>
+
+                                <!-- Project Description -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Description *
+                                    </label>
+                                    <textarea
+                                        id="projectDescription"
+                                        placeholder="Brief description of what the project does and technologies used..."
+                                        rows="4"
+                                        class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
+                                    ></textarea>
+                                </div>
+
+                                <!-- Project URL -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Project URL
+                                    </label>
+                                    <input
+                                        type="url"
+                                        id="projectUrl"
+                                        placeholder="https://your-project.com or https://github.com/username/repo"
+                                        class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                    />
+                                </div>
+
+                                <!-- Project Image -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Project Image URL
+                                    </label>
+                                    <input
+                                        type="url"
+                                        id="projectImage"
+                                        placeholder="https://example.com/project-image.jpg"
+                                        class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                    />
+                                    <p class="text-gray-400 text-sm mt-2">
+                                        Optional: Add a screenshot or logo of your project
+                                    </p>
+                                </div>
+
+                                <!-- Form Actions -->
+                                <div class="flex space-x-3">
+                                    <button id="addProjectBtn" class="flex-1 py-3 bg-gray-600 text-gray-400 cursor-not-allowed rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                                        Add Project
+                                    </button>
+                                    <button id="cancelProjectBtn" class="px-6 py-3 bg-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-700 transition-all duration-300">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Current Projects List -->
+                            <div class="mt-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-semibold text-white">Your Projects (<span id="projectCount">0</span>)</h4>
+                                    <button id="clearAllBtn" class="text-red-400 hover:text-red-300 text-sm font-medium hidden">
+                                        Clear All
+                                    </button>
+                                </div>
+
+                                <div id="projectsList" class="space-y-4">
+                                    <div class="text-center py-8 text-gray-400">
+                                        <div class="text-4xl mb-2">🎯</div>
+                                        <p>No projects added yet. Add some projects to showcase your work!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tips -->
+                            <div class="mt-6 bg-yellow-500/20 border border-yellow-400/30 rounded-xl p-4">
+                                <h5 class="text-yellow-300 font-semibold mb-2">Tips</h5>
+                                <ul class="text-yellow-100 text-sm space-y-1">
+                                    <li>• Include your best and most recent projects</li>
+                                    <li>• Add live links or GitHub repositories</li>
+                                    <li>• Use clear, descriptive project names</li>
+                                    <li>• Mention key technologies and achievements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview Section -->
+                    <div class="space-y-8">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Live Preview</h3>
+                            
+                            <!-- Preview Container -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                                <!-- Header Preview -->
+                                <div class="relative p-8 bg-gradient-to-r from-gray-50 to-gray-100">
+                                    <div class="flex items-center space-x-6">
+                                        <div class="w-24 h-24 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-4xl text-white">
+                                            
+                                        </div>
+                                        <div>
+                                            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                                                PROJECTS_LIST
+                                            </h1>
+                                            <p class="text-xl text-gray-600">
+                                                PROJECTS_LIST
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Projects Preview -->
+                                <div class="p-8">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Projects</h2>
+                                    
+                                    <div id="projectsPreview" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="text-center py-8 text-gray-400">
+                                            <div class="text-4xl mb-2">🚀</div>
+                                            <p>Your projects will appear here as cards</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sample Content -->
+                                <div class="p-8 bg-gray-50">
+                                    <div class="space-y-4">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12">
+                    <!-- Back Button -->
+                    <button id="backButton" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-gray-700 rounded-2xl hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
+                        <svg class="mr-3 w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span>Back to Skills</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button id="nextButton" class="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-500/50">
+                        <span class="relative z-10">Next</span>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <svg class="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let projects = [];
+        let isAddingProject = false;
+
+        // Profile data will be loaded from URL parameters
+        let profileData = {
+            fullName: 'John Doe',
+            professionalTitle: 'Web Developer',
+            profileImage: '👨‍💻'
+        };
+
+        function updateProjectsDisplay() {
+            const projectsList = document.getElementById('projectsList');
+            const projectCount = document.getElementById('projectCount');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            const projectsPreview = document.getElementById('projectsPreview');
+
+            projectCount.textContent = projects.length;
+
+            if (projects.length === 0) {
+                projectsList.innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <div class="w-12 h-12 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <p>No projects added yet. Add some projects to showcase your work!</p>
+                    </div>
+                `;
+                projectsPreview.innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <div class="w-12 h-12 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <p>Your projects will appear here as cards</p>
+                    </div>
+                `;
+                clearAllBtn.classList.add('hidden');
+            } else {
+                projectsList.innerHTML = projects.map(project => `
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h5 class="text-white font-semibold mb-1">${project.name}</h5>
+                                <p class="text-gray-300 text-sm mb-2 line-clamp-2">${project.description}</p>
+                                ${project.url ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm">View Project →</a>` : ''}
+                            </div>
+                            <div class="flex space-x-2 ml-4">
+                                <button onclick="editProject(${project.id})" class="text-blue-400 hover:text-blue-300 text-sm">Edit</button>
+                                <button onclick="removeProject(${project.id})" class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                projectsPreview.innerHTML = projects.map(project => `
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                        ${project.image ? `
+                            <div class="mb-4">
+                                <img src="${project.image}" alt="${project.name}" class="w-full h-32 object-cover rounded-lg" onerror="this.style.display='none'">
+                            </div>
+                        ` : ''}
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">${project.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${project.description}</p>
+                        ${project.url ? `
+                            <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium">
+                                View Project
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        ` : ''}
+                    </div>
+                `).join('');
+
+                clearAllBtn.classList.remove('hidden');
+            }
+        }
+
+        function addProject() {
+            const name = document.getElementById('projectName').value.trim();
+            const description = document.getElementById('projectDescription').value.trim();
+            const url = document.getElementById('projectUrl').value.trim();
+            const image = document.getElementById('projectImage').value.trim();
+
+            if (name && description) {
+                const newProject = {
+                    id: Date.now(),
+                    name: name,
+                    description: description,
+                    url: url || null,
+                    image: image || null
+                };
+                
+                projects.push(newProject);
+                updateProjectsDisplay();
+                
+                // Clear form
+                document.getElementById('projectName').value = '';
+                document.getElementById('projectDescription').value = '';
+                document.getElementById('projectUrl').value = '';
+                document.getElementById('projectImage').value = '';
+                
+                // Hide form
+                document.getElementById('projectForm').classList.add('hidden');
+                document.getElementById('newProjectBtn').classList.remove('hidden');
+                isAddingProject = false;
+            }
+        }
+
+        function removeProject(projectId) {
+            projects = projects.filter(project => project.id !== projectId);
+            updateProjectsDisplay();
+        }
+
+        function editProject(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (project) {
+                document.getElementById('projectName').value = project.name;
+                document.getElementById('projectDescription').value = project.description;
+                document.getElementById('projectUrl').value = project.url || '';
+                document.getElementById('projectImage').value = project.image || '';
+                
+                removeProject(projectId);
+                
+                document.getElementById('projectForm').classList.remove('hidden');
+                document.getElementById('newProjectBtn').classList.add('hidden');
+                isAddingProject = true;
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById('projectName').value.trim();
+            const description = document.getElementById('projectDescription').value.trim();
+            const addBtn = document.getElementById('addProjectBtn');
+            
+            if (name && description) {
+                addBtn.classList.remove('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            } else {
+                addBtn.classList.add('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const allData = JSON.parse(decodeURIComponent(dataParam));
+                    if (allData.profile) {
+                        profileData = allData.profile;
+                    }
+                } catch (error) {
+                    console.error('Error loading profile data:', error);
+                }
+            }
+            
+            updateProjectsDisplay();
+
+            // New project button
+            document.getElementById('newProjectBtn').addEventListener('click', function() {
+                document.getElementById('projectForm').classList.remove('hidden');
+                this.classList.add('hidden');
+                isAddingProject = true;
+            });
+
+            // Form validation
+            document.getElementById('projectName').addEventListener('input', validateForm);
+            document.getElementById('projectDescription').addEventListener('input', validateForm);
+
+            // Add project
+            document.getElementById('addProjectBtn').addEventListener('click', addProject);
+
+            // Cancel project
+            document.getElementById('cancelProjectBtn').addEventListener('click', function() {
+                document.getElementById('projectForm').classList.add('hidden');
+                document.getElementById('newProjectBtn').classList.remove('hidden');
+                
+                // Clear form
+                document.getElementById('projectName').value = '';
+                document.getElementById('projectDescription').value = '';
+                document.getElementById('projectUrl').value = '';
+                document.getElementById('projectImage').value = '';
+                
+                isAddingProject = false;
+            });
+
+            // Clear all projects
+            document.getElementById('clearAllBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all projects?')) {
+                    projects = [];
+                    updateProjectsDisplay();
+                }
+            });
+
+            // Navigation
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'skills-customization.html';
+            });
+
+            document.getElementById('nextButton').addEventListener('click', function() {
+                // Get URL parameters from previous steps
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataParam = urlParams.get('data');
+                
+                if (dataParam) {
+                    try {
+                        const allData = JSON.parse(decodeURIComponent(dataParam));
+                        
+                        // Add projects to the data
+                        allData.projects = projects;
+                        
+                        // Determine next step based on selected sections
+                        let nextStep = 'experience-education-customization.html'; // Default to experience/education
+                        
+                        // Check which sections are selected and find the next one
+                        const selectedSections = allData.sections || [];
+                        const sectionIds = selectedSections.map(s => s.id);
+                        
+                        // Find next section after 'projects'
+                        if (sectionIds.includes('experience') || sectionIds.includes('education')) {
+                            nextStep = 'experience-education-customization.html';
+                        } else if (sectionIds.includes('contact')) {
+                            nextStep = 'contact-customization.html';
+                        } else {
+                            // If no other sections, go to style customization
+                            nextStep = 'style-customization.html';
+                        }
+                        
+                        // Navigate to the next step with updated data
+                        window.location.href = `${nextStep}?data=${encodeURIComponent(JSON.stringify(allData))}`;
+                        
+                    } catch (error) {
+                        console.error('Error parsing data:', error);
+                        // Fallback navigation
+                        window.location.href = `experience-education-customization.html?projects=${encodeURIComponent(JSON.stringify(projects))}`;
+                    }
+                } else {
+                    // Fallback if no data parameter
+                    window.location.href = `experience-education-customization.html?projects=${encodeURIComponent(JSON.stringify(projects))}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

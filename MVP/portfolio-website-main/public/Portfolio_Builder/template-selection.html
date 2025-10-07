@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Choose Your Template</title>
+    <meta name="description" content="Select from professional portfolio templates: Minimal, Modern, or Creative designs.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter builder-green">
+    <link rel="stylesheet" href="./styles.css" />
+    <div class="min-h-screen page-bg relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Choose Your <span class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Template</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Select a template that best represents your style and professional goals
+                    </p>
+                </div>
+
+                <!-- Template Selection -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Minimal Template -->
+                    <div class="template-card relative group cursor-pointer transition-all duration-300 transform hover:scale-105" data-template="minimal">
+                        <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                            <!-- Selection Indicator -->
+                            <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 group-hover:bg-gray-500 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                1
+                            </div>
+
+                            <!-- Template Preview -->
+                            <div class="w-full h-48 rounded-2xl mb-6 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
+                                <!-- Template Mockup -->
+                                <div class="w-32 h-20 bg-white rounded-lg shadow-lg flex flex-col p-2">
+                                    <div class="flex items-center space-x-1 mb-1">
+                                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="flex-1 bg-gray-100 rounded flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Floating Elements -->
+                                <div class="absolute top-4 right-4 w-3 h-3 bg-white rounded-full opacity-60 animate-bounce"></div>
+                                <div class="absolute bottom-4 left-4 w-2 h-2 bg-white rounded-full opacity-40 animate-bounce" style="animation-delay: 1s;"></div>
+                            </div>
+
+                            <!-- Template Info -->
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2 font-poppins">Minimal</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Clean, focused design perfect for showcasing your work with elegance and simplicity.
+                                    </p>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <p class="text-sm text-gray-500 font-medium">
+                                        Perfect for designers, developers, and creative professionals
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Template -->
+                    <div class="template-card relative group cursor-pointer transition-all duration-300 transform hover:scale-105" data-template="modern">
+                        <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-blue-300 hover:border-blue-400 transition-all duration-300">
+                            <!-- Selection Indicator -->
+                            <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 group-hover:bg-gray-500 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                2
+                            </div>
+
+                            <!-- Template Preview -->
+                            <div class="w-full h-48 rounded-2xl mb-6 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center relative overflow-hidden">
+                                <!-- Template Mockup -->
+                                <div class="w-32 h-20 bg-white rounded-lg shadow-lg flex flex-col p-2">
+                                    <div class="flex items-center space-x-1 mb-1">
+                                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="flex-1 bg-gray-100 rounded flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-blue-300 rounded-lg"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Floating Elements -->
+                                <div class="absolute top-4 right-4 w-3 h-3 bg-white rounded-full opacity-60 animate-bounce"></div>
+                                <div class="absolute bottom-4 left-4 w-2 h-2 bg-white rounded-full opacity-40 animate-bounce" style="animation-delay: 1s;"></div>
+                            </div>
+
+                            <!-- Template Info -->
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-800 mb-2 font-poppins">Modern</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Contemporary layout with bold typography and dynamic elements for maximum impact.
+                                    </p>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <p class="text-sm text-gray-500 font-medium">
+                                        Ideal for entrepreneurs, consultants, and business professionals
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Template -->
+                    <div class="template-card relative group cursor-pointer transition-all duration-300 transform hover:scale-105" data-template="creative">
+                        <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-pink-300 hover:border-pink-400 transition-all duration-300">
+                            <!-- Selection Indicator -->
+                            <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 group-hover:bg-gray-500 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                3
+                            </div>
+
+                            <!-- Template Preview -->
+                            <div class="w-full h-48 rounded-2xl mb-6 bg-gradient-to-br from-pink-100 to-orange-100 flex items-center justify-center relative overflow-hidden">
+                                <!-- Template Mockup -->
+                                <div class="w-32 h-20 bg-white rounded-lg shadow-lg flex flex-col p-2">
+                                    <div class="flex items-center space-x-1 mb-1">
+                                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="flex-1 bg-gray-100 rounded flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-gradient-to-r from-pink-300 to-purple-300 rounded-lg"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Floating Elements -->
+                                <div class="absolute top-4 right-4 w-3 h-3 bg-white rounded-full opacity-60 animate-bounce"></div>
+                                <div class="absolute bottom-4 left-4 w-2 h-2 bg-white rounded-full opacity-40 animate-bounce" style="animation-delay: 1s;"></div>
+                            </div>
+
+                            <!-- Template Info -->
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-pink-800 mb-2 font-poppins">Creative</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Artistic and expressive design that lets your personality and creativity shine through.
+                                    </p>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <p class="text-sm text-gray-500 font-medium">
+                                        Great for artists, photographers, and creative freelancers
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-center">
+                    <button id="nextButton" class="text-gray-400 bg-gray-600 cursor-not-allowed group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold rounded-2xl transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-purple-500/50">
+                        <span class="relative z-10">Next</span>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedTemplate = null;
+
+        // Template selection functionality
+        document.querySelectorAll('.template-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.template-card').forEach(c => {
+                    c.classList.remove('scale-105');
+                    c.querySelector('.border-2').classList.remove('border-purple-500', 'shadow-purple-500/25');
+                    c.querySelector('.border-2').classList.add('border-gray-200', 'border-blue-300', 'border-pink-300');
+                    
+                    const indicator = c.querySelector('.absolute.-top-3.-right-3');
+                    indicator.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                    indicator.classList.add('bg-gray-400');
+                    
+                    // Reset indicator content
+                    const templateId = c.dataset.template;
+                    if (templateId === 'minimal') indicator.textContent = '1';
+                    else if (templateId === 'modern') indicator.textContent = '2';
+                    else if (templateId === 'creative') indicator.textContent = '3';
+                    
+                    // Remove glow effect
+                    const glowEffect = c.querySelector('.absolute.inset-0.rounded-3xl');
+                    if (glowEffect) glowEffect.remove();
+                });
+
+                // Add selection to clicked card
+                this.classList.add('scale-105');
+                const border = this.querySelector('.border-2');
+                border.classList.remove('border-gray-200', 'border-blue-300', 'border-pink-300');
+                border.classList.add('border-purple-500', 'shadow-purple-500/25');
+                
+                const indicator = this.querySelector('.absolute.-top-3.-right-3');
+                indicator.classList.remove('bg-gray-400');
+                indicator.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                indicator.textContent = '✓';
+                
+                // Add glow effect
+                const glowEffect = document.createElement('div');
+                glowEffect.className = 'absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 pointer-events-none';
+                this.querySelector('.bg-white').appendChild(glowEffect);
+                
+                // Update selected template
+                selectedTemplate = this.dataset.template;
+                
+                // Enable next button
+                const nextButton = document.getElementById('nextButton');
+                nextButton.classList.remove('text-gray-400', 'bg-gray-600', 'cursor-not-allowed');
+                nextButton.classList.add('text-white', 'bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'shadow-2xl', 'hover:shadow-purple-500/25', 'hover:scale-105', 'hover:-translate-y-1');
+                
+                // Remove ALL existing animation elements first
+                nextButton.querySelectorAll('.absolute').forEach(el => el.remove());
+                nextButton.querySelectorAll('svg').forEach(el => el.remove());
+                
+                // Add fresh animation elements
+                const buttonBg = document.createElement('div');
+                buttonBg.className = 'absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300';
+                nextButton.appendChild(buttonBg);
+                
+                const shimmer = document.createElement('div');
+                shimmer.className = 'absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000';
+                nextButton.appendChild(shimmer);
+                
+                const arrow = document.createElement('svg');
+                arrow.className = 'ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1';
+                arrow.setAttribute('fill', 'none');
+                arrow.setAttribute('stroke', 'currentColor');
+                arrow.setAttribute('viewBox', '0 0 24 24');
+                arrow.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>';
+                nextButton.appendChild(arrow);
+            });
+        });
+
+        // Next button functionality
+        document.getElementById('nextButton').addEventListener('click', function() {
+            if (selectedTemplate) {
+                // Navigate to theme selection step
+                window.location.href = `theme-selection.html?template=${selectedTemplate}`;
+            }
+        });
+    </script>
+</body>
+</html>

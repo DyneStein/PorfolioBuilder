@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Add Your Skills</title>
+    <meta name="description" content="Add your skills and technologies to showcase your expertise.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter builder-green">
+    <link rel="stylesheet" href="./styles.css" />
+    <div class="min-h-screen page-bg relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Add Your <span class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Skills</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Showcase your technical abilities and competencies. Add skills that highlight your expertise.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Skills Input Section -->
+                    <div class="space-y-8">
+                        <!-- Skills Management -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Skills & Technologies</h3>
+                            
+                            <div class="space-y-6">
+                                <!-- AI Suggestions -->
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Need suggestions?</h4>
+                                        <p class="text-gray-300 text-sm">Get AI-recommended skills for <span id="professionalTitle">your role</span></p>
+                                    </div>
+                                    <button id="aiSuggestionBtn" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                                        <div class="flex items-center space-x-2">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                            </svg>
+                                            <span>AI Suggestions</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <!-- AI Suggestions Display -->
+                                <div id="aiSuggestionBox" class="bg-blue-500/20 border border-blue-400/30 rounded-xl p-4 hidden">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h5 class="text-blue-300 font-semibold">Suggested Skills</h5>
+                                        <button id="closeSuggestion" class="text-blue-400 hover:text-blue-300">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="aiSuggestionsList" class="flex flex-wrap gap-2 mb-4">
+                                        <!-- AI suggestions will be loaded here -->
+                                    </div>
+                                    <button id="dismissSuggestion" class="px-4 py-2 bg-gray-600 text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
+                                        Close
+                                    </button>
+                                </div>
+
+                                <!-- Manual Skill Input -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Add Skills Manually
+                                    </label>
+                                    <div class="flex space-x-3">
+                                        <input
+                                            type="text"
+                                            id="skillInput"
+                                            placeholder="e.g., React, Python, Figma..."
+                                            class="flex-1 px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                        <button id="addSkillBtn" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Current Skills -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="text-lg font-semibold text-white">Your Skills (<span id="skillCount">0</span>)</h4>
+                                        <button id="clearAllBtn" class="text-red-400 hover:text-red-300 text-sm font-medium hidden">
+                                            Clear All
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="skillsList" class="flex flex-wrap gap-2">
+                                        <div class="text-center py-8 text-gray-400 w-full">
+                                            <div class="text-4xl mb-2">🎯</div>
+                                            <p>No skills added yet. Add some skills to showcase your expertise!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tips -->
+                                <div class="bg-yellow-500/20 border border-yellow-400/30 rounded-xl p-4">
+                                    <h5 class="text-yellow-300 font-semibold mb-2">Tips</h5>
+                                    <ul class="text-yellow-100 text-sm space-y-1">
+                                        <li>• Include both technical and soft skills</li>
+                                        <li>• Focus on skills relevant to your target role</li>
+                                        <li>• Aim for 5-15 skills for optimal display</li>
+                                        <li>• Use consistent naming (e.g., "JavaScript" not "JS")</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview Section -->
+                    <div class="space-y-8">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Live Preview</h3>
+                            
+                            <!-- Preview Container -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                                <!-- Header Preview -->
+                                <div class="relative p-8 bg-gradient-to-r from-gray-50 to-gray-100">
+                                    <div class="flex items-center space-x-6">
+                                        <div class="w-24 h-24 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-4xl text-white">
+                                            
+                                        </div>
+                                        <div>
+                                            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                                                SKILLS_LIST
+                                            </h1>
+                                            <p class="text-xl text-gray-600">
+                                                SKILLS_LIST
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Skills Preview -->
+                                <div class="p-8">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Skills</h2>
+                                    
+                                    <div id="skillsPreview" class="flex flex-wrap gap-3">
+                                        <div class="text-center py-8 text-gray-400 w-full">
+                                            <div class="text-4xl mb-2">⚡</div>
+                                            <p>Your skills will appear here as badges</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sample Content -->
+                                <div class="p-8 bg-gray-50">
+                                    <div class="space-y-4">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12">
+                    <!-- Back Button -->
+                    <button id="backButton" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-gray-700 rounded-2xl hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
+                        <svg class="mr-3 w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span>Back to Bio</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button id="nextButton" class="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-500/50">
+                        <span class="relative z-10">Next</span>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <svg class="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let skills = [];
+        let isGenerating = false;
+
+        // Profile data will be loaded from URL parameters
+        let profileData = {
+            fullName: 'John Doe',
+            professionalTitle: 'Web Developer',
+            profileImage: '👨‍💻'
+        };
+
+        const skillCategories = {
+            'Web Developer': [
+                'HTML', 'CSS', 'JavaScript', 'React', 'Vue.js', 'Angular', 'Node.js', 'Express.js',
+                'Python', 'Django', 'Flask', 'PHP', 'Laravel', 'MySQL', 'PostgreSQL', 'MongoDB',
+                'Git', 'GitHub', 'Docker', 'AWS', 'Firebase', 'REST APIs', 'GraphQL', 'TypeScript'
+            ],
+            'UX Designer': [
+                'Figma', 'Adobe XD', 'Sketch', 'InVision', 'Principle', 'Framer', 'Prototyping',
+                'User Research', 'Wireframing', 'User Testing', 'Design Systems', 'Accessibility',
+                'Photoshop', 'Illustrator', 'After Effects', 'Principle', 'Zeplin', 'Abstract'
+            ],
+            'Data Scientist': [
+                'Python', 'R', 'SQL', 'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch',
+                'Jupyter', 'Tableau', 'Power BI', 'Matplotlib', 'Seaborn', 'Machine Learning',
+                'Deep Learning', 'Statistics', 'Data Visualization', 'Apache Spark', 'Hadoop'
+            ],
+            'Marketing Manager': [
+                'Google Analytics', 'Facebook Ads', 'Google Ads', 'HubSpot', 'Mailchimp',
+                'Content Marketing', 'SEO', 'SEM', 'Social Media Marketing', 'Email Marketing',
+                'Marketing Automation', 'CRM', 'Salesforce', 'Adobe Creative Suite', 'Canva'
+            ],
+            'Project Manager': [
+                'Agile', 'Scrum', 'Jira', 'Trello', 'Asana', 'Microsoft Project', 'Slack',
+                'Risk Management', 'Budget Planning', 'Team Leadership', 'Stakeholder Management',
+                'Confluence', 'Monday.com', 'Notion', 'Microsoft Teams', 'Zoom'
+            ]
+        };
+
+        function updateSkillsDisplay() {
+            const skillsList = document.getElementById('skillsList');
+            const skillCount = document.getElementById('skillCount');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            const skillsPreview = document.getElementById('skillsPreview');
+
+            skillCount.textContent = skills.length;
+
+            if (skills.length === 0) {
+                skillsList.innerHTML = `
+                    <div class="text-center py-8 text-gray-400 w-full">
+                        <div class="w-12 h-12 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <p>No skills added yet. Add some skills to showcase your expertise!</p>
+                    </div>
+                `;
+                skillsPreview.innerHTML = `
+                    <div class="text-center py-8 text-gray-400 w-full">
+                        <div class="w-12 h-12 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <p>Your skills will appear here as badges</p>
+                    </div>
+                `;
+                clearAllBtn.classList.add('hidden');
+            } else {
+                skillsList.innerHTML = skills.map(skill => `
+                    <div class="flex items-center space-x-2 px-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg">
+                        <span class="text-sm font-medium">${skill}</span>
+                        <button onclick="removeSkill('${skill}')" class="text-white hover:text-red-200 transition-colors">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+
+                skillsPreview.innerHTML = skills.map(skill => `
+                    <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium shadow-lg">
+                        ${skill}
+                    </span>
+                `).join('');
+
+                clearAllBtn.classList.remove('hidden');
+            }
+        }
+
+        function addSkill(skill) {
+            const trimmedSkill = skill.trim();
+            if (trimmedSkill && !skills.includes(trimmedSkill)) {
+                skills.push(trimmedSkill);
+                updateSkillsDisplay();
+            }
+        }
+
+        function removeSkill(skillToRemove) {
+            skills = skills.filter(skill => skill !== skillToRemove);
+            updateSkillsDisplay();
+        }
+
+        function generateAISuggestions() {
+            if (isGenerating) return;
+            
+            isGenerating = true;
+            const aiSuggestionBtn = document.getElementById('aiSuggestionBtn');
+            aiSuggestionBtn.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Generating...</span>
+                </div>
+            `;
+            aiSuggestionBtn.disabled = true;
+            aiSuggestionBtn.classList.add('bg-gray-600', 'cursor-not-allowed');
+            aiSuggestionBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-purple-600', 'hover:from-blue-700', 'hover:to-purple-700');
+            
+            // Simulate AI generation
+            setTimeout(() => {
+                const title = profileData.professionalTitle || 'Web Developer';
+                const categorySkills = skillCategories[title] || skillCategories['Web Developer'];
+                
+                // Get 8 random skills from the category
+                const shuffled = categorySkills.sort(() => 0.5 - Math.random());
+                const suggestedSkills = shuffled.slice(0, 8);
+                
+                const aiSuggestionsList = document.getElementById('aiSuggestionsList');
+                aiSuggestionsList.innerHTML = suggestedSkills.map(skill => `
+                    <button onclick="addAISuggestion('${skill}')" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                        + ${skill}
+                    </button>
+                `).join('');
+                
+                document.getElementById('aiSuggestionBox').classList.remove('hidden');
+                
+                // Reset button
+                aiSuggestionBtn.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        <span>AI Suggestions</span>
+                    </div>
+                `;
+                aiSuggestionBtn.disabled = false;
+                aiSuggestionBtn.classList.remove('bg-gray-600', 'cursor-not-allowed');
+                aiSuggestionBtn.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-purple-600', 'hover:from-blue-700', 'hover:to-purple-700');
+                
+                isGenerating = false;
+            }, 1500);
+        }
+
+        function addAISuggestion(skill) {
+            addSkill(skill);
+            document.getElementById('aiSuggestionBox').classList.add('hidden');
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const allData = JSON.parse(decodeURIComponent(dataParam));
+                    if (allData.profile) {
+                        profileData = allData.profile;
+                    }
+                } catch (error) {
+                    console.error('Error loading profile data:', error);
+                }
+            }
+            
+            // Update professional title display
+            document.getElementById('professionalTitle').textContent = profileData.professionalTitle || 'your role';
+            
+            updateSkillsDisplay();
+
+            // Manual skill input
+            document.getElementById('skillInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSkill(this.value);
+                    this.value = '';
+                }
+            });
+
+            document.getElementById('addSkillBtn').addEventListener('click', function() {
+                const skillInput = document.getElementById('skillInput');
+                addSkill(skillInput.value);
+                skillInput.value = '';
+            });
+
+            // AI suggestions
+            document.getElementById('aiSuggestionBtn').addEventListener('click', generateAISuggestions);
+            document.getElementById('closeSuggestion').addEventListener('click', function() {
+                document.getElementById('aiSuggestionBox').classList.add('hidden');
+            });
+            document.getElementById('dismissSuggestion').addEventListener('click', function() {
+                document.getElementById('aiSuggestionBox').classList.add('hidden');
+            });
+
+            // Clear all skills
+            document.getElementById('clearAllBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all skills?')) {
+                    skills = [];
+                    updateSkillsDisplay();
+                }
+            });
+
+            // Navigation
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'bio-customization.html';
+            });
+
+            document.getElementById('nextButton').addEventListener('click', function() {
+                // Get URL parameters from previous steps
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataParam = urlParams.get('data');
+                
+                if (dataParam) {
+                    try {
+                        const allData = JSON.parse(decodeURIComponent(dataParam));
+                        
+                        // Add skills to the data
+                        allData.skills = skills;
+                        
+                        // Determine next step based on selected sections
+                        let nextStep = 'projects-customization.html'; // Default to projects
+                        
+                        // Check which sections are selected and find the next one
+                        const selectedSections = allData.sections || [];
+                        const sectionIds = selectedSections.map(s => s.id);
+                        
+                        // Find next section after 'skills'
+                        if (sectionIds.includes('projects')) {
+                            nextStep = 'projects-customization.html';
+                        } else if (sectionIds.includes('experience') || sectionIds.includes('education')) {
+                            nextStep = 'experience-education-customization.html';
+                        } else if (sectionIds.includes('contact')) {
+                            nextStep = 'contact-customization.html';
+                        } else {
+                            // If no other sections, go to style customization
+                            nextStep = 'style-customization.html';
+                        }
+                        
+                        // Navigate to the next step with updated data
+                        window.location.href = `${nextStep}?data=${encodeURIComponent(JSON.stringify(allData))}`;
+                        
+                    } catch (error) {
+                        console.error('Error parsing data:', error);
+                        // Fallback navigation
+                        window.location.href = `projects-customization.html?skills=${encodeURIComponent(JSON.stringify(skills))}`;
+                    }
+                } else {
+                    // Fallback if no data parameter
+                    window.location.href = `projects-customization.html?skills=${encodeURIComponent(JSON.stringify(skills))}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

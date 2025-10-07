@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.9/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #e0f7fa;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      cursor: none; /* Hide default cursor */
+    }
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #26c6da;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999; /* Increased z-index to stay above all elements */
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, opacity 0.2s ease;
+      opacity: 1; /* Ensure visibility */
+    }
+    .custom-cursor::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #26c6da;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+    }
+    .custom-cursor.hidden {
+      opacity: 0; /* Hide cursor only when explicitly needed */
+    }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .wave-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .tilt {
+      transition: transform 0.3s ease;
+    }
+    .tilt:hover {
+      transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div class="custom-cursor" id="cursor"></div>
+  <script type="text/babel">
+    const { useEffect, useRef } = React;
+
+    const App = () => {
+      const cursorRef = useRef(null);
+
+      useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Custom Cursor Logic
+        const cursor = cursorRef.current;
+        const moveCursor = (e) => {
+          gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.1,
+            opacity: 1, // Ensure cursor is visible
+          });
+        };
+
+        // Handle mouse movement
+        document.addEventListener('mousemove', moveCursor);
+
+        // Ensure cursor visibility when interacting with elements
+        document.addEventListener('mouseover', (e) => {
+          if (e.target.tagName !== 'HTML' && e.target.tagName !== 'BODY') {
+            cursor.classList.remove('hidden');
+          }
+        });
+
+        // Hide cursor when leaving the document
+        document.addEventListener('mouseleave', () => {
+          cursor.classList.add('hidden');
+        });
+
+        // Show cursor when re-entering the document
+        document.addEventListener('mouseenter', () => {
+          cursor.classList.remove('hidden');
+        });
+
+        // Floating Header Animation
+        gsap.to('.nav-bar', {
+          y: -10,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          duration: 3,
+        });
+
+        // Floating FABs
+        gsap.to('.fab', {
+          y: -15,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          duration: 2,
+          stagger: 0.2,
+        });
+
+        // Wave Background Animation
+        gsap.to('.wave-bg', {
+          backgroundPosition: '200% 0',
+          repeat: -1,
+          duration: 20,
+          ease: 'linear',
+        });
+
+        // Scroll-triggered Animations
+        gsap.utils.toArray('.section').forEach((section) => {
+          gsap.from(section, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        });
+
+        // Project Card Tilt
+        gsap.utils.toArray('.project-card').forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(card, {
+              rotationY: x / 50,
+              rotationX: -y / 50,
+              ease: 'power1.out',
+              duration: 0.3,
+            });
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+              rotationY: 0,
+              rotationX: 0,
+              ease: 'power1.out',
+              duration: 0.3,
+            });
+          });
+        });
+
+        // Cleanup event listeners
+        return () => {
+          document.removeEventListener('mousemove', moveCursor);
+          document.removeEventListener('mouseleave', () => {});
+          document.removeEventListener('mouseenter', () => {});
+          document.removeEventListener('mouseover', () => {});
+        };
+      }, []);
+
+      return (
+        <div className="min-h-screen relative">
+          {/* Wave Background */}
+          <svg className="wave-bg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+            <path fill="#26c6da" fillOpacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,186.7C960,213,1056,235,1152,213.3C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+          </svg>
+
+          {/* Floating Header */}
+          <nav className="nav-bar fixed top-0 w-full p-4 glassmorphism z-50">
+            <ul className="flex justify-center space-x-8 text-lg">
+              <li><a href="#hero" className="hover:text-cyan-400 transition">Home</a></li>
+              <li><a href="#about" className="hover:text-cyan-400 transition">About</a></li>
+              <li><a href="#portfolio" className="hover:text-cyan-400 transition">Portfolio</a></li>
+              <li><a href="#skills" className="hover:text-cyan-400 transition">Skills</a></li>
+              <li><a href="#testimonials" className="hover:text-cyan-400 transition">Testimonials</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition">Contact</a></li>
+            </ul>
+          </nav>
+
+          {/* Floating Action Buttons */}
+          <div className="fixed right-4 top-1/2 transform -translate-y-1/2 space-y-4 z-50">
+            <a href="#contact" className="fab block p-3 bg-cyan-500 rounded-full shadow-lg hover:bg-cyan-400 transition">Contact</a>
+            <a href="/cv.pdf" className="fab block p-3 bg-cyan-500 rounded-full shadow-lg hover:bg-cyan-400 transition">CV</a>
+          </div>
+
+          {/* Hero Section */}
+          <section id="hero" className="section h-screen flex items-center justify-center text-center">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-bold floating">Welcome to My World</h1>
+              <p className="text-xl mt-4 text-cyan-300">Creative Developer | Caribbean Dreamer</p>
+              <div className="mt-8 space-x-4">
+                <a href="#portfolio" className="px-6 py-3 bg-cyan-500 rounded-full hover:bg-cyan-400 transition">View Work</a>
+                <a href="#contact" className="px-6 py-3 border border-cyan-500 rounded-full hover:bg-cyan-500 transition">Let's Connect</a>
+              </div>
+            </div>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="section py-16 px-4 md:px-16">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center">
+              <div className="w-full md:w-1/2">
+                <div className="relative w-64 h-64 mx-auto glassmorphism rounded-full overflow-hidden floating">
+                  <img src="https://via.placeholder.com/300" alt="Portrait" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 mt-8 md:mt-0">
+                <h2 className="text-4xl font-bold">About Me</h2>
+                <p className="mt-4 text-lg glassmorphism p-4">I'm a passionate developer inspired by the fluidity and beauty of the Caribbean. My work blends creativity with technology to create immersive digital experiences.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Portfolio Section */}
+          <section id="portfolio" className="section py-16 px-4 md:px-16">
+            <h2 className="text-4xl font-bold text-center">Portfolio</h2>
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[1, 2, 3].map((_, i) => (
+                <div key={i} className="project-card glassmorphism p-4 rounded-lg tilt">
+                  <img src="https://via.placeholder.com/300" alt="Project" className="w-full h-48 object-cover rounded" />
+                  <h3 className="text-xl mt-4">Project {i + 1}</h3>
+                  <p className="mt-2 text-cyan-300">A unique project showcasing creativity and innovation.</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Skills Section */}
+          <section id="skills" className="section py-16 px-4 md:px-16">
+            <h2 className="text-4xl font-bold text-center">Skills</h2>
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {['React', 'JavaScript', 'CSS', 'GSAP'].map((skill, i) => (
+                <div key={i} className="text-center">
+                  <div className="w-24 h-24 mx-auto rounded-full bg-cyan-500 flex items-center justify-center floating">
+                    <span>{skill}</span>
+                  </div>
+                  <p className="mt-2">{skill}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Testimonials Section */}
+          <section id="testimonials" className="section py-16 px-4 md:px-16">
+            <h2 className="text-4xl font-bold text-center">Testimonials</h2>
+            <div className="mt-8 flex space-x-8 overflow-x-auto max-w-4xl mx-auto">
+              {[1, 2, 3].map((_, i) => (
+                <div key={i} className="min-w-[300px] glassmorphism p-4 rounded-lg floating">
+                  <p>"Amazing work! Truly brought my vision to life."</p>
+                  <p className="mt-2 text-cyan-300">Client {i + 1}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact" className="section py-16 px-4 md:px-16">
+            <h2 className="text-4xl font-bold text-center">Get in Touch</h2>
+            <div className="mt-8 max-w-lg mx-auto">
+              <input type="text" placeholder="Name" className="w-full p-3 mb-4 glassmorphism rounded" />
+              <input type="email" placeholder="Email" className="w-full p-3 mb-4 glassmorphism rounded" />
+              <textarea placeholder="Message" className="w-full p-3 mb-4 glassmorphism rounded h-32"></textarea>
+              <button className="w-full p-3 bg-cyan-500 rounded-full hover:bg-cyan-400 transition">Send Message</button>
+            </div>
+          </section>
+
+          {/* Floating Footer */}
+          <footer className="py-8 text-center glassmorphism floating">
+            <p>© 2025 Your Name. All rights reserved.</p>
+            <div className="mt-4 flex justify-center space-x-4">
+              <a href="#" className="text-cyan-400 hover:text-cyan-300">Twitter</a>
+              <a href="#" className="text-cyan-400 hover:text-cyan-300">LinkedIn</a>
+              <a href="#" className="text-cyan-400 hover:text-cyan-300">GitHub</a>
+            </div>
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

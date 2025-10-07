@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Add Experience & Education</title>
+    <meta name="description" content="Add your professional experience and educational background.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter builder-green">
+    <link rel="stylesheet" href="./styles.css" />
+    <div class="min-h-screen page-bg relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Add Your <span class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Background</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Share your professional experience and educational background to showcase your journey.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Input Section -->
+                    <div class="space-y-8">
+                        <!-- Tab Navigation -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <div class="flex space-x-1 mb-8" id="tabNavigation">
+                                <!-- Tabs will be dynamically loaded -->
+                            </div>
+
+                            <!-- Experience Tab -->
+                            <div id="experienceTab" class="hidden">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-2xl font-bold text-white font-poppins">Work Experience</h3>
+                                    <button id="newExperienceBtn" class="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-semibold hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                                        <div class="flex items-center space-x-2">
+                                            <span>+</span>
+                                            <span>Add Experience</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div id="experienceForm" class="space-y-6 hidden">
+                                    <!-- Role -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Job Title *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="experienceRole"
+                                            placeholder="e.g., Senior Developer, Marketing Manager"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Company -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Company *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="experienceCompany"
+                                            placeholder="e.g., Google, Microsoft, Startup Inc."
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Duration -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Duration *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="experienceDuration"
+                                            placeholder="e.g., Jan 2020 - Present, 2020-2022"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            id="experienceDescription"
+                                            placeholder="Brief description of your role and key achievements..."
+                                            rows="3"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
+                                        ></textarea>
+                                    </div>
+
+                                    <!-- Form Actions -->
+                                    <div class="flex space-x-3">
+                                        <button id="addExperienceBtn" class="flex-1 py-3 bg-gray-600 text-gray-400 cursor-not-allowed rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                                            Add Experience
+                                        </button>
+                                        <button id="cancelExperienceBtn" class="px-6 py-3 bg-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-700 transition-all duration-300">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Experience List -->
+                                <div class="mt-8">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-lg font-semibold text-white">Your Experience (<span id="experienceCount">0</span>)</h4>
+                                        <button id="clearExperienceBtn" class="text-red-400 hover:text-red-300 text-sm font-medium hidden">
+                                            Clear All
+                                        </button>
+                                    </div>
+
+                                    <div id="experienceList" class="space-y-4">
+                                        <div class="text-center py-8 text-gray-400">
+                                            <div class="text-4xl mb-2">💼</div>
+                                            <p>No experience added yet. Add your work history!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Education Tab -->
+                            <div id="educationTab" class="hidden">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-2xl font-bold text-white font-poppins">Education</h3>
+                                    <button id="newEducationBtn" class="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-semibold hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                                        <div class="flex items-center space-x-2">
+                                            <span>+</span>
+                                            <span>Add Education</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div id="educationForm" class="space-y-6 hidden">
+                                    <!-- Degree -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Degree *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="educationDegree"
+                                            placeholder="e.g., Bachelor of Computer Science, MBA"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Institution -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Institution *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="educationInstitution"
+                                            placeholder="e.g., Stanford University, MIT"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Duration -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                                            Duration *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="educationDuration"
+                                            placeholder="e.g., 2018-2022, Graduated 2020"
+                                            class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        />
+                                    </div>
+
+                                    <!-- Form Actions -->
+                                    <div class="flex space-x-3">
+                                        <button id="addEducationBtn" class="flex-1 py-3 bg-gray-600 text-gray-400 cursor-not-allowed rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                                            Add Education
+                                        </button>
+                                        <button id="cancelEducationBtn" class="px-6 py-3 bg-gray-600 text-gray-300 rounded-xl font-semibold hover:bg-gray-700 transition-all duration-300">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Education List -->
+                                <div class="mt-8">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-lg font-semibold text-white">Your Education (<span id="educationCount">0</span>)</h4>
+                                        <button id="clearEducationBtn" class="text-red-400 hover:text-red-300 text-sm font-medium hidden">
+                                            Clear All
+                                        </button>
+                                    </div>
+
+                                    <div id="educationList" class="space-y-4">
+                                        <div class="text-center py-8 text-gray-400">
+                                            <div class="text-4xl mb-2">🎓</div>
+                                            <p>No education added yet. Add your academic background!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tips -->
+                            <div class="mt-6 bg-yellow-500/20 border border-yellow-400/30 rounded-xl p-4">
+                                <h5 class="text-yellow-300 font-semibold mb-2">💡 Tips</h5>
+                                <ul class="text-yellow-100 text-sm space-y-1">
+                                    <li>• List your most recent and relevant experience first</li>
+                                    <li>• Include key achievements and responsibilities</li>
+                                    <li>• Use consistent date formats (e.g., "Jan 2020 - Present")</li>
+                                    <li>• Keep descriptions concise but informative</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview Section -->
+                    <div class="space-y-8">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Live Preview</h3>
+                            
+                            <!-- Preview Container -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                                <!-- Header Preview -->
+                                <div class="relative p-8 bg-gradient-to-r from-gray-50 to-gray-100">
+                                    <div class="flex items-center space-x-6">
+                                        <div class="w-24 h-24 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-4xl text-white">
+                                            
+                                        </div>
+                                        <div>
+                                            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                                                EXPERIENCE_LIST
+                                            </h1>
+                                            <p class="text-xl text-gray-600">
+                                                EXPERIENCE_LIST
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Experience Preview -->
+                                <div id="experiencePreview" class="p-8 hidden">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Experience</h2>
+                                    <div id="experiencePreviewContent">
+                                        <!-- Experience content will be loaded here -->
+                                    </div>
+                                </div>
+
+                                <!-- Education Preview -->
+                                <div id="educationPreview" class="p-8 hidden">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Education</h2>
+                                    <div id="educationPreviewContent">
+                                        <!-- Education content will be loaded here -->
+                                    </div>
+                                </div>
+                                
+                                <!-- Sample Content -->
+                                <div class="p-8 bg-gray-50">
+                                    <div class="space-y-4">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12">
+                    <!-- Back Button -->
+                    <button id="backButton" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-gray-700 rounded-2xl hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
+                        <svg class="mr-3 w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span>Back to Projects</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button id="nextButton" class="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-500/50">
+                        <span class="relative z-10">Next</span>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                        <svg class="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let experience = [];
+        let education = [];
+        let activeTab = 'experience';
+        let isAddingExperience = false;
+        let isAddingEducation = false;
+
+        // Profile data will be loaded from URL parameters
+        let profileData = {
+            fullName: 'John Doe',
+            professionalTitle: 'Web Developer',
+            profileImage: '👨‍💻'
+        };
+
+        // Check which sections are available (will be loaded from URL parameters)
+        let hasExperienceSection = true; // Default
+        let hasEducationSection = true; // Default
+
+        function loadTabNavigation() {
+            const tabNavigation = document.getElementById('tabNavigation');
+            let tabs = '';
+            
+            if (hasExperienceSection) {
+                tabs += `
+                    <button onclick="switchTab('experience')" class="tab-btn flex-1 py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'experience' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' : 'bg-white/20 text-gray-300 hover:bg-white/30'}">
+                        💼 Experience
+                    </button>
+                `;
+            }
+            
+            if (hasEducationSection) {
+                tabs += `
+                    <button onclick="switchTab('education')" class="tab-btn flex-1 py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'education' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' : 'bg-white/20 text-gray-300 hover:bg-white/30'}">
+                        🎓 Education
+                    </button>
+                `;
+            }
+            
+            tabNavigation.innerHTML = tabs;
+        }
+
+        function switchTab(tab) {
+            activeTab = tab;
+            
+            // Hide all tabs
+            document.getElementById('experienceTab').classList.add('hidden');
+            document.getElementById('educationTab').classList.add('hidden');
+            
+            // Show active tab
+            if (tab === 'experience' && hasExperienceSection) {
+                document.getElementById('experienceTab').classList.remove('hidden');
+            } else if (tab === 'education' && hasEducationSection) {
+                document.getElementById('educationTab').classList.remove('hidden');
+            }
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white');
+                btn.classList.add('bg-white/20', 'text-gray-300', 'hover:bg-white/30');
+            });
+            
+            const activeBtn = document.querySelector(`[onclick="switchTab('${tab}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white/20', 'text-gray-300', 'hover:bg-white/30');
+                activeBtn.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white');
+            }
+            
+            updatePreview();
+        }
+
+        function updateExperienceDisplay() {
+            const experienceList = document.getElementById('experienceList');
+            const experienceCount = document.getElementById('experienceCount');
+            const clearExperienceBtn = document.getElementById('clearExperienceBtn');
+
+            experienceCount.textContent = experience.length;
+
+            if (experience.length === 0) {
+                experienceList.innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <div class="text-4xl mb-2">💼</div>
+                        <p>No experience added yet. Add your work history!</p>
+                    </div>
+                `;
+                clearExperienceBtn.classList.add('hidden');
+            } else {
+                experienceList.innerHTML = experience.map(exp => `
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h5 class="text-white font-semibold mb-1">${exp.role}</h5>
+                                <p class="text-blue-400 font-medium mb-1">${exp.company}</p>
+                                <p class="text-gray-400 text-sm mb-2">${exp.duration}</p>
+                                ${exp.description ? `<p class="text-gray-300 text-sm line-clamp-2">${exp.description}</p>` : ''}
+                            </div>
+                            <div class="flex space-x-2 ml-4">
+                                <button onclick="editExperience(${exp.id})" class="text-blue-400 hover:text-blue-300 text-sm">Edit</button>
+                                <button onclick="removeExperience(${exp.id})" class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                clearExperienceBtn.classList.remove('hidden');
+            }
+        }
+
+        function updateEducationDisplay() {
+            const educationList = document.getElementById('educationList');
+            const educationCount = document.getElementById('educationCount');
+            const clearEducationBtn = document.getElementById('clearEducationBtn');
+
+            educationCount.textContent = education.length;
+
+            if (education.length === 0) {
+                educationList.innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <div class="text-4xl mb-2">🎓</div>
+                        <p>No education added yet. Add your academic background!</p>
+                    </div>
+                `;
+                clearEducationBtn.classList.add('hidden');
+            } else {
+                educationList.innerHTML = education.map(edu => `
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h5 class="text-white font-semibold mb-1">${edu.degree}</h5>
+                                <p class="text-blue-400 font-medium mb-1">${edu.institution}</p>
+                                <p class="text-gray-400 text-sm">${edu.duration}</p>
+                            </div>
+                            <div class="flex space-x-2 ml-4">
+                                <button onclick="editEducation(${edu.id})" class="text-blue-400 hover:text-blue-300 text-sm">Edit</button>
+                                <button onclick="removeEducation(${edu.id})" class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                clearEducationBtn.classList.remove('hidden');
+            }
+        }
+
+        function updatePreview() {
+            // Experience Preview
+            if (hasExperienceSection) {
+                const experiencePreview = document.getElementById('experiencePreview');
+                const experiencePreviewContent = document.getElementById('experiencePreviewContent');
+                
+                if (experience.length > 0) {
+                    experiencePreview.classList.remove('hidden');
+                    experiencePreviewContent.innerHTML = experience.map(exp => `
+                        <div class="border-l-4 border-purple-500 pl-6 pb-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">${exp.role}</h3>
+                                <p class="text-blue-600 font-medium mb-1">${exp.company}</p>
+                                <p class="text-gray-500 text-sm mb-2">${exp.duration}</p>
+                                ${exp.description ? `<p class="text-gray-600 text-sm">${exp.description}</p>` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    experiencePreview.classList.add('hidden');
+                }
+            }
+
+            // Education Preview
+            if (hasEducationSection) {
+                const educationPreview = document.getElementById('educationPreview');
+                const educationPreviewContent = document.getElementById('educationPreviewContent');
+                
+                if (education.length > 0) {
+                    educationPreview.classList.remove('hidden');
+                    educationPreviewContent.innerHTML = education.map(edu => `
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-1">${edu.degree}</h3>
+                            <p class="text-blue-600 font-medium mb-1">${edu.institution}</p>
+                            <p class="text-gray-500 text-sm">${edu.duration}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    educationPreview.classList.add('hidden');
+                }
+            }
+        }
+
+        function validateExperienceForm() {
+            const role = document.getElementById('experienceRole').value.trim();
+            const company = document.getElementById('experienceCompany').value.trim();
+            const duration = document.getElementById('experienceDuration').value.trim();
+            const addBtn = document.getElementById('addExperienceBtn');
+            
+            if (role && company && duration) {
+                addBtn.classList.remove('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            } else {
+                addBtn.classList.add('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            }
+        }
+
+        function validateEducationForm() {
+            const degree = document.getElementById('educationDegree').value.trim();
+            const institution = document.getElementById('educationInstitution').value.trim();
+            const duration = document.getElementById('educationDuration').value.trim();
+            const addBtn = document.getElementById('addEducationBtn');
+            
+            if (degree && institution && duration) {
+                addBtn.classList.remove('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            } else {
+                addBtn.classList.add('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                addBtn.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-pink-600', 'text-white', 'hover:from-purple-700', 'hover:to-pink-700');
+            }
+        }
+
+        function addExperience() {
+            const role = document.getElementById('experienceRole').value.trim();
+            const company = document.getElementById('experienceCompany').value.trim();
+            const duration = document.getElementById('experienceDuration').value.trim();
+            const description = document.getElementById('experienceDescription').value.trim();
+
+            if (role && company && duration) {
+                const newExperience = {
+                    id: Date.now(),
+                    role: role,
+                    company: company,
+                    duration: duration,
+                    description: description
+                };
+                
+                experience.push(newExperience);
+                updateExperienceDisplay();
+                updatePreview();
+                
+                // Clear form
+                document.getElementById('experienceRole').value = '';
+                document.getElementById('experienceCompany').value = '';
+                document.getElementById('experienceDuration').value = '';
+                document.getElementById('experienceDescription').value = '';
+                
+                // Hide form
+                document.getElementById('experienceForm').classList.add('hidden');
+                document.getElementById('newExperienceBtn').classList.remove('hidden');
+                isAddingExperience = false;
+            }
+        }
+
+        function addEducation() {
+            const degree = document.getElementById('educationDegree').value.trim();
+            const institution = document.getElementById('educationInstitution').value.trim();
+            const duration = document.getElementById('educationDuration').value.trim();
+
+            if (degree && institution && duration) {
+                const newEducation = {
+                    id: Date.now(),
+                    degree: degree,
+                    institution: institution,
+                    duration: duration
+                };
+                
+                education.push(newEducation);
+                updateEducationDisplay();
+                updatePreview();
+                
+                // Clear form
+                document.getElementById('educationDegree').value = '';
+                document.getElementById('educationInstitution').value = '';
+                document.getElementById('educationDuration').value = '';
+                
+                // Hide form
+                document.getElementById('educationForm').classList.add('hidden');
+                document.getElementById('newEducationBtn').classList.remove('hidden');
+                isAddingEducation = false;
+            }
+        }
+
+        function removeExperience(experienceId) {
+            experience = experience.filter(exp => exp.id !== experienceId);
+            updateExperienceDisplay();
+            updatePreview();
+        }
+
+        function removeEducation(educationId) {
+            education = education.filter(edu => edu.id !== educationId);
+            updateEducationDisplay();
+            updatePreview();
+        }
+
+        function editExperience(experienceId) {
+            const exp = experience.find(e => e.id === experienceId);
+            if (exp) {
+                document.getElementById('experienceRole').value = exp.role;
+                document.getElementById('experienceCompany').value = exp.company;
+                document.getElementById('experienceDuration').value = exp.duration;
+                document.getElementById('experienceDescription').value = exp.description;
+                
+                removeExperience(experienceId);
+                
+                document.getElementById('experienceForm').classList.remove('hidden');
+                document.getElementById('newExperienceBtn').classList.add('hidden');
+                isAddingExperience = true;
+            }
+        }
+
+        function editEducation(educationId) {
+            const edu = education.find(e => e.id === educationId);
+            if (edu) {
+                document.getElementById('educationDegree').value = edu.degree;
+                document.getElementById('educationInstitution').value = edu.institution;
+                document.getElementById('educationDuration').value = edu.duration;
+                
+                removeEducation(educationId);
+                
+                document.getElementById('educationForm').classList.remove('hidden');
+                document.getElementById('newEducationBtn').classList.add('hidden');
+                isAddingEducation = true;
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data and section availability from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const allData = JSON.parse(decodeURIComponent(dataParam));
+                    if (allData.profile) {
+                        profileData = allData.profile;
+                    }
+                    
+                    // Check which sections are available
+                    const selectedSections = allData.sections || [];
+                    const sectionIds = selectedSections.map(s => s.id);
+                    hasExperienceSection = sectionIds.includes('experience');
+                    hasEducationSection = sectionIds.includes('education');
+                    
+                } catch (error) {
+                    console.error('Error loading profile data:', error);
+                }
+            }
+            
+            loadTabNavigation();
+            updateExperienceDisplay();
+            updateEducationDisplay();
+            updatePreview();
+
+            // Switch to first available tab
+            if (hasExperienceSection) {
+                switchTab('experience');
+            } else if (hasEducationSection) {
+                switchTab('education');
+            }
+
+            // Experience form validation
+            document.getElementById('experienceRole').addEventListener('input', validateExperienceForm);
+            document.getElementById('experienceCompany').addEventListener('input', validateExperienceForm);
+            document.getElementById('experienceDuration').addEventListener('input', validateExperienceForm);
+
+            // Education form validation
+            document.getElementById('educationDegree').addEventListener('input', validateEducationForm);
+            document.getElementById('educationInstitution').addEventListener('input', validateEducationForm);
+            document.getElementById('educationDuration').addEventListener('input', validateEducationForm);
+
+            // Experience buttons
+            document.getElementById('newExperienceBtn').addEventListener('click', function() {
+                document.getElementById('experienceForm').classList.remove('hidden');
+                this.classList.add('hidden');
+                isAddingExperience = true;
+            });
+
+            document.getElementById('addExperienceBtn').addEventListener('click', addExperience);
+
+            document.getElementById('cancelExperienceBtn').addEventListener('click', function() {
+                document.getElementById('experienceForm').classList.add('hidden');
+                document.getElementById('newExperienceBtn').classList.remove('hidden');
+                
+                // Clear form
+                document.getElementById('experienceRole').value = '';
+                document.getElementById('experienceCompany').value = '';
+                document.getElementById('experienceDuration').value = '';
+                document.getElementById('experienceDescription').value = '';
+                
+                isAddingExperience = false;
+            });
+
+            document.getElementById('clearExperienceBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all experience?')) {
+                    experience = [];
+                    updateExperienceDisplay();
+                    updatePreview();
+                }
+            });
+
+            // Education buttons
+            document.getElementById('newEducationBtn').addEventListener('click', function() {
+                document.getElementById('educationForm').classList.remove('hidden');
+                this.classList.add('hidden');
+                isAddingEducation = true;
+            });
+
+            document.getElementById('addEducationBtn').addEventListener('click', addEducation);
+
+            document.getElementById('cancelEducationBtn').addEventListener('click', function() {
+                document.getElementById('educationForm').classList.add('hidden');
+                document.getElementById('newEducationBtn').classList.remove('hidden');
+                
+                // Clear form
+                document.getElementById('educationDegree').value = '';
+                document.getElementById('educationInstitution').value = '';
+                document.getElementById('educationDuration').value = '';
+                
+                isAddingEducation = false;
+            });
+
+            document.getElementById('clearEducationBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all education?')) {
+                    education = [];
+                    updateEducationDisplay();
+                    updatePreview();
+                }
+            });
+
+            // Navigation
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'projects-customization.html';
+            });
+
+            document.getElementById('nextButton').addEventListener('click', function() {
+                // Get URL parameters from previous steps
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataParam = urlParams.get('data');
+                
+                if (dataParam) {
+                    try {
+                        const allData = JSON.parse(decodeURIComponent(dataParam));
+                        
+                        // Add experience and education to the data
+                        allData.experience = experience;
+                        allData.education = education;
+                        
+                        // Determine next step based on selected sections
+                        let nextStep = 'contact-customization.html'; // Default to contact
+                        
+                        // Check which sections are selected and find the next one
+                        const selectedSections = allData.sections || [];
+                        const sectionIds = selectedSections.map(s => s.id);
+                        
+                        // Find next section after 'experience' and 'education'
+                        if (sectionIds.includes('contact')) {
+                            nextStep = 'contact-customization.html';
+                        } else {
+                            // If no other sections, go to style customization
+                            nextStep = 'style-customization.html';
+                        }
+                        
+                        // Navigate to the next step with updated data
+                        window.location.href = `${nextStep}?data=${encodeURIComponent(JSON.stringify(allData))}`;
+                        
+                    } catch (error) {
+                        console.error('Error parsing data:', error);
+                        // Fallback navigation
+                        window.location.href = `contact-customization.html?experience=${encodeURIComponent(JSON.stringify(experience))}&education=${encodeURIComponent(JSON.stringify(education))}`;
+                    }
+                } else {
+                    // Fallback if no data parameter
+                    window.location.href = `contact-customization.html?experience=${encodeURIComponent(JSON.stringify(experience))}&education=${encodeURIComponent(JSON.stringify(education))}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Customize Style</title>
+    <meta name="description" content="Customize your portfolio's buttons, icons, and hover effects.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter">
+    <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Customize Your <span class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Style</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Choose button styles, icon designs, and hover effects to match your personal brand.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Style Selection Section -->
+                    <div class="space-y-8">
+                        <!-- Button Styles -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Button Styles</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Rounded Style -->
+                                <div class="button-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="rounded">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            1
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Rounded</h4>
+                                                <div class="w-4 h-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Smooth rounded corners for a modern, friendly look</p>
+                                            
+                                            <!-- Button Preview -->
+                                            <div class="flex justify-center">
+                                                <button class="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-purple-700 hover:to-pink-700">
+                                                    Sample Button
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Square Style -->
+                                <div class="button-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="square">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            2
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Square</h4>
+                                                <div class="w-4 h-4 rounded-none bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Sharp edges for a clean, professional appearance</p>
+                                            
+                                            <!-- Button Preview -->
+                                            <div class="flex justify-center">
+                                                <button class="px-6 py-3 rounded-none bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-purple-700 hover:to-pink-700">
+                                                    Sample Button
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Minimal Style -->
+                                <div class="button-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="minimal">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            3
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Minimal</h4>
+                                                <div class="w-4 h-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Subtle rounded corners for an elegant, understated style</p>
+                                            
+                                            <!-- Button Preview -->
+                                            <div class="flex justify-center">
+                                                <button class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-purple-700 hover:to-pink-700">
+                                                    Sample Button
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Icon Styles -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Icon Styles</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Line Icons -->
+                                <div class="icon-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="line">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            1
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Line Icons</h4>
+                                                <div class="flex space-x-2">
+                                                    <svg class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                                                    </svg>
+                                                    <svg class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Clean outline icons for a modern, minimalist look</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Filled Icons -->
+                                <div class="icon-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="filled">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            2
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Filled Icons</h4>
+                                                <div class="flex space-x-2">
+                                                    <svg class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                                                    </svg>
+                                                    <svg class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Solid filled icons for a bold, impactful appearance</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Brand Icons -->
+                                <div class="icon-style-card cursor-pointer transition-all duration-300 transform hover:scale-105" data-style="brand">
+                                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm transition-all duration-300">
+                                            3
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="text-xl font-bold text-gray-800">Brand Icons</h4>
+                                                <div class="flex space-x-2">
+                                                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                                                        <span class="text-white text-xs">f</span>
+                                                    </div>
+                                                    <div class="w-6 h-6 bg-blue-500 rounded flex items-center justify-center">
+                                                        <span class="text-white text-xs">in</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="text-gray-600">Platform-specific icons for social links and tools</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hover Effects -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Hover Effects</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Scale Effect -->
+                                <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-semibold text-white">Scale Effect</h4>
+                                        <p class="text-gray-300 text-sm">Buttons and icons grow slightly on hover</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="scaleEffect" checked class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-500/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-purple-600 peer-checked:to-pink-600"></div>
+                                    </label>
+                                </div>
+
+                                <!-- Shadow Effect -->
+                                <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-semibold text-white">Shadow Effect</h4>
+                                        <p class="text-gray-300 text-sm">Adds depth with enhanced shadows on hover</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="shadowEffect" checked class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-500/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-purple-600 peer-checked:to-pink-600"></div>
+                                    </label>
+                                </div>
+
+                                <!-- Color Change -->
+                                <div class="flex items-center justify-between p-4 bg-white/10 rounded-xl">
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-semibold text-white">Color Change</h4>
+                                        <p class="text-gray-300 text-sm">Smooth color transitions on hover</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="colorEffect" checked class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-500/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-purple-600 peer-checked:to-pink-600"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview Section -->
+                    <div class="space-y-8">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-6 font-poppins">Live Preview</h3>
+                            
+                            <!-- Preview Container -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                                <!-- Header Preview -->
+                                <div class="relative p-8 bg-gradient-to-r from-gray-50 to-gray-100">
+                                    <div class="flex items-center space-x-6">
+                                        <div class="w-24 h-24 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-4xl text-white">
+                                            BUTTON_STYLE
+                                        </div>
+                                        <div>
+                                            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                                                BUTTON_STYLE
+                                            </h1>
+                                            <p class="text-xl text-gray-600">
+                                                BUTTON_STYLE
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Style Preview -->
+                                <div class="p-8">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Interactive Elements</h2>
+                                    
+                                    <div class="space-y-6">
+                                        <!-- Button Examples -->
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Buttons</h3>
+                                            <div class="flex flex-wrap gap-4">
+                                                <button id="primaryButton" class="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-purple-700 hover:to-pink-700">
+                                                    Primary Action
+                                                </button>
+                                                <button id="secondaryButton" class="px-4 py-2 bg-gray-100 text-gray-700 font-medium transition-all duration-300 rounded-xl hover:scale-105 hover:shadow-md hover:bg-gray-200">
+                                                    Secondary
+                                                </button>
+                                                <button id="outlineButton" class="px-4 py-2 border-2 border-purple-600 text-purple-600 font-medium transition-all duration-300 rounded-xl hover:scale-105 hover:shadow-md hover:bg-purple-600 hover:text-white">
+                                                    Outline
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Icon Examples -->
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Icons</h3>
+                                            <div class="flex flex-wrap gap-6">
+                                                <div class="flex items-center space-x-2">
+                                                    <svg id="arrowIcon" class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                                    </svg>
+                                                    <span class="text-gray-600">Arrow</span>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <svg id="heartIcon" class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                    </svg>
+                                                    <span class="text-gray-600">Heart</span>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <svg id="phoneIcon" class="w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                                    </svg>
+                                                    <span class="text-gray-600">Phone</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Contact Links Preview -->
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Contact Links</h3>
+                                            <div class="space-y-3">
+                                                <a href="#" id="emailLink" class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg transition-all duration-300 rounded-xl hover:scale-105 hover:shadow-md hover:bg-gray-100">
+                                                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-gray-700">Email Contact</span>
+                                                    <svg class="ml-auto w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                    </svg>
+                                                </a>
+                                                <a href="#" id="linkedinLink" class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg transition-all duration-300 rounded-xl hover:scale-105 hover:shadow-md hover:bg-gray-100">
+                                                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-gray-700">LinkedIn Profile</span>
+                                                    <svg class="ml-auto w-6 h-6 text-gray-600 transition-all duration-300 hover:scale-110 hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sample Content -->
+                                <div class="p-8 bg-gray-50">
+                                    <div class="space-y-4">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12">
+                    <!-- Back Button -->
+                    <button id="backButton" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-gray-700 rounded-2xl hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
+                        <svg class="mr-3 w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span>Back to Contact</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button id="nextButton" class="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-500/50">
+                        <span class="relative z-10">Next</span>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <svg class="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedStyles = {
+            buttonStyle: 'rounded',
+            iconStyle: 'line',
+            hoverEffects: {
+                scale: true,
+                shadow: true,
+                colorChange: true
+            }
+        };
+
+        // Profile data will be loaded from URL parameters
+        let profileData = {
+            fullName: 'John Doe',
+            professionalTitle: 'Web Developer',
+            profileImage: '👨‍💻'
+        };
+
+        function updateButtonStyles() {
+            const buttonStyle = selectedStyles.buttonStyle;
+            const scaleEffect = selectedStyles.hoverEffects.scale ? 'hover:scale-105' : '';
+            const shadowEffect = selectedStyles.hoverEffects.shadow ? 'hover:shadow-lg' : '';
+            const colorEffect = selectedStyles.hoverEffects.colorChange ? 'hover:from-purple-700 hover:to-pink-700' : '';
+
+            let buttonClass = 'px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold transition-all duration-300';
+            
+            switch (buttonStyle) {
+                case 'rounded':
+                    buttonClass += ' rounded-xl';
+                    break;
+                case 'square':
+                    buttonClass += ' rounded-none';
+                    break;
+                case 'minimal':
+                    buttonClass += ' rounded-lg';
+                    break;
+            }
+            
+            buttonClass += ` ${scaleEffect} ${shadowEffect} ${colorEffect}`;
+
+            // Update preview buttons
+            document.getElementById('primaryButton').className = buttonClass;
+            
+            const secondaryClass = `px-4 py-2 bg-gray-100 text-gray-700 font-medium transition-all duration-300 ${buttonStyle === 'rounded' ? 'rounded-xl' : buttonStyle === 'square' ? 'rounded-none' : 'rounded-lg'} ${scaleEffect} ${shadowEffect} ${selectedStyles.hoverEffects.colorChange ? 'hover:bg-gray-200' : ''}`;
+            document.getElementById('secondaryButton').className = secondaryClass;
+            
+            const outlineClass = `px-4 py-2 border-2 border-purple-600 text-purple-600 font-medium transition-all duration-300 ${buttonStyle === 'rounded' ? 'rounded-xl' : buttonStyle === 'square' ? 'rounded-none' : 'rounded-lg'} ${scaleEffect} ${shadowEffect} ${selectedStyles.hoverEffects.colorChange ? 'hover:bg-purple-600 hover:text-white' : ''}`;
+            document.getElementById('outlineButton').className = outlineClass;
+
+            // Update contact links
+            const linkClass = `flex items-center space-x-3 p-3 bg-gray-50 transition-all duration-300 ${buttonStyle === 'rounded' ? 'rounded-xl' : buttonStyle === 'square' ? 'rounded-none' : 'rounded-lg'} ${scaleEffect} ${shadowEffect} ${selectedStyles.hoverEffects.colorChange ? 'hover:bg-gray-100' : ''}`;
+            document.getElementById('emailLink').className = linkClass;
+            document.getElementById('linkedinLink').className = linkClass;
+        }
+
+        function updateIconStyles() {
+            const iconStyle = selectedStyles.iconStyle;
+            const scaleEffect = selectedStyles.hoverEffects.scale ? 'hover:scale-110' : '';
+            const colorEffect = selectedStyles.hoverEffects.colorChange ? 'hover:text-purple-600' : '';
+
+            let iconClass = `w-6 h-6 text-gray-600 transition-all duration-300 ${scaleEffect} ${colorEffect}`;
+
+            // Update all icons
+            const icons = ['arrowIcon', 'heartIcon', 'phoneIcon'];
+            icons.forEach(iconId => {
+                const icon = document.getElementById(iconId);
+                icon.className = iconClass;
+                
+                if (iconStyle === 'filled') {
+                    icon.setAttribute('fill', 'currentColor');
+                    icon.setAttribute('stroke-width', '0');
+                } else {
+                    icon.setAttribute('fill', 'none');
+                    icon.setAttribute('stroke-width', '2');
+                }
+            });
+
+            // Update link icons
+            const linkIcons = document.querySelectorAll('#emailLink svg, #linkedinLink svg');
+            linkIcons.forEach(icon => {
+                icon.className = `ml-auto ${iconClass}`;
+                
+                if (iconStyle === 'filled') {
+                    icon.setAttribute('fill', 'currentColor');
+                    icon.setAttribute('stroke-width', '0');
+                } else {
+                    icon.setAttribute('fill', 'none');
+                    icon.setAttribute('stroke-width', '2');
+                }
+            });
+        }
+
+        function updateHoverEffects() {
+            updateButtonStyles();
+            updateIconStyles();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const allData = JSON.parse(decodeURIComponent(dataParam));
+                    if (allData.profile) {
+                        profileData = allData.profile;
+                    }
+                } catch (error) {
+                    console.error('Error loading profile data:', error);
+                }
+            }
+            
+            updateButtonStyles();
+            updateIconStyles();
+
+            // Button style selection
+            document.querySelectorAll('.button-style-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove previous selection
+                    document.querySelectorAll('.button-style-card').forEach(c => {
+                        c.classList.remove('scale-105');
+                        c.querySelector('.border-2').classList.remove('border-purple-500', 'shadow-purple-500/25');
+                        c.querySelector('.border-2').classList.add('border-gray-200');
+                        
+                        const indicator = c.querySelector('.absolute.-top-3.-right-3');
+                        indicator.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                        indicator.classList.add('bg-gray-400');
+                        
+                        const index = Array.from(document.querySelectorAll('.button-style-card')).indexOf(c);
+                        indicator.textContent = index + 1;
+                    });
+
+                    // Add selection to clicked card
+                    this.classList.add('scale-105');
+                    const border = this.querySelector('.border-2');
+                    border.classList.remove('border-gray-200');
+                    border.classList.add('border-purple-500', 'shadow-purple-500/25');
+                    
+                    const indicator = this.querySelector('.absolute.-top-3.-right-3');
+                    indicator.classList.remove('bg-gray-400');
+                    indicator.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                    indicator.textContent = '✓';
+                    
+                    // Update selected style
+                    selectedStyles.buttonStyle = this.dataset.style;
+                    updateButtonStyles();
+                });
+            });
+
+            // Icon style selection
+            document.querySelectorAll('.icon-style-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove previous selection
+                    document.querySelectorAll('.icon-style-card').forEach(c => {
+                        c.classList.remove('scale-105');
+                        c.querySelector('.border-2').classList.remove('border-purple-500', 'shadow-purple-500/25');
+                        c.querySelector('.border-2').classList.add('border-gray-200');
+                        
+                        const indicator = c.querySelector('.absolute.-top-3.-right-3');
+                        indicator.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                        indicator.classList.add('bg-gray-400');
+                        
+                        const index = Array.from(document.querySelectorAll('.icon-style-card')).indexOf(c);
+                        indicator.textContent = index + 1;
+                    });
+
+                    // Add selection to clicked card
+                    this.classList.add('scale-105');
+                    const border = this.querySelector('.border-2');
+                    border.classList.remove('border-gray-200');
+                    border.classList.add('border-purple-500', 'shadow-purple-500/25');
+                    
+                    const indicator = this.querySelector('.absolute.-top-3.-right-3');
+                    indicator.classList.remove('bg-gray-400');
+                    indicator.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'scale-110');
+                    indicator.textContent = '✓';
+                    
+                    // Update selected style
+                    selectedStyles.iconStyle = this.dataset.style;
+                    updateIconStyles();
+                });
+            });
+
+            // Hover effects toggles
+            document.getElementById('scaleEffect').addEventListener('change', function() {
+                selectedStyles.hoverEffects.scale = this.checked;
+                updateHoverEffects();
+            });
+
+            document.getElementById('shadowEffect').addEventListener('change', function() {
+                selectedStyles.hoverEffects.shadow = this.checked;
+                updateHoverEffects();
+            });
+
+            document.getElementById('colorEffect').addEventListener('change', function() {
+                selectedStyles.hoverEffects.colorChange = this.checked;
+                updateHoverEffects();
+            });
+
+            // Navigation
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'contact-customization.html';
+            });
+
+            document.getElementById('nextButton').addEventListener('click', function() {
+                // Get URL parameters from previous steps
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataParam = urlParams.get('data');
+                
+                if (dataParam) {
+                    try {
+                        const allData = JSON.parse(decodeURIComponent(dataParam));
+                        
+                        // Add style preferences to the data
+                        allData.styles = selectedStyles;
+                        
+                        // Navigate to final review (next step after style customization)
+                        window.location.href = `final-review.html?data=${encodeURIComponent(JSON.stringify(allData))}`;
+                        
+                    } catch (error) {
+                        console.error('Error parsing data:', error);
+                        // Fallback navigation
+                        window.location.href = `final-review.html?styles=${encodeURIComponent(JSON.stringify(selectedStyles))}`;
+                    }
+                } else {
+                    // Fallback if no data parameter
+                    window.location.href = `final-review.html?styles=${encodeURIComponent(JSON.stringify(selectedStyles))}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Apply Inter font as primary */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Poppins for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Enhanced button hover effects - clean fade and scale animations */
+.group:hover .shimmer-effect {
+  /* Clean fade animation instead of sliding */
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* Remove sliding shimmer animations globally */
+.shimmer-slide {
+  display: none !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #7c3aed, #db2777);
+}
+
+/* Enhanced focus states */
+button:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Improved text rendering */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .hero-text {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .subheadline {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gradient-to-br {
+    background: #000000;
+  }
+  
+  .text-gray-300 {
+    color: #ffffff;
+  }
+  
+  .text-gray-400 {
+    color: #cccccc;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Builder Green Theme (scoped, non-breaking) */
+.builder-green .page-bg {
+  /* Deep charcoal to emerald glow */
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(16, 185, 129, 0.12), transparent 60%),
+              radial-gradient(1000px 500px at 10% 110%, rgba(163, 230, 53, 0.12), transparent 60%),
+              linear-gradient(135deg, #0b0f14 0%, #0b1a12 50%, #0b0f14 100%);
+}
+
+.builder-green .badge-accent {
+  background-image: linear-gradient(90deg, #a7f3d0 0%, #34d399 100%);
+  color: #0b1a12;
+}
+
+.builder-green .btn-primary {
+  background-image: linear-gradient(90deg, #34d399 0%, #a7f3d0 100%);
+  color: #0b1a12 !important;
+}
+
+.builder-green .btn-primary:hover {
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.builder-green .btn-secondary {
+  background: rgba(15, 23, 42, 0.6);
+  color: #cbd5e1;
+}
+
+/* Typography to match main site */
+@font-face {
+  font-family: 'CabinetGrotesk-Variable';
+  src: url('/src/assets/fonts/CabinetGrotesk-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans-Variable';
+  src: url('/src/assets/fonts/GeneralSans-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.builder-green {
+  --builder-text: #e5fbe6;
+  --builder-muted: #9ae6b4;
+}
+
+.builder-green, .builder-green *:not(.font-poppins):not(.font-inter) {
+  font-family: 'GeneralSans-Variable', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.builder-green h1, .builder-green h2, .builder-green h3, .builder-green .heading, .builder-green .font-poppins {
+  font-family: 'CabinetGrotesk-Variable', 'GeneralSans-Variable', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.builder-green .text-primary { color: var(--builder-text); }
+.builder-green .text-muted { color: var(--builder-muted); }

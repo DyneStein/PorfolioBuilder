@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Generate Your Portfolio</title>
+    <meta name="description" content="Preview and download your complete portfolio.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter builder-green">
+    <div class="min-h-screen page-bg relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 font-poppins">
+                        Your <span class="bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">Portfolio</span> is Ready!
+                    </h1>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Preview your complete portfolio and download it in your preferred format.
+                    </p>
+                </div>
+
+                <!-- Main Content -->
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                    <!-- Left Column - Controls -->
+                    <div class="xl:col-span-1 space-y-6">
+                        <!-- Format Selection -->
+                        <link rel="stylesheet" href="./styles.css" />
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20">
+                            <h3 class="text-xl font-bold text-white mb-4 font-poppins">Download Format</h3>
+                            
+                            <div class="space-y-3">
+                                <div id="htmlFormat" class="cursor-pointer transition-all duration-300 transform hover:scale-105 scale-105">
+                                    <div class="bg-white rounded-xl p-4 border-2 border-green-500 shadow-green-500/25 transition-all duration-300">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h4 class="text-lg font-bold text-gray-800">HTML/CSS/JS</h4>
+                                                <p class="text-gray-600 text-sm mt-1">Single HTML file with embedded styles</p>
+                                            </div>
+                                            <div class="text-3xl">📄</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="reactFormat" class="cursor-pointer transition-all duration-300 transform hover:scale-105">
+                                    <div class="bg-white rounded-xl p-4 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h4 class="text-lg font-bold text-gray-800">React/Next.js</h4>
+                                                <p class="text-gray-600 text-sm mt-1">Full React project with components</p>
+                                            </div>
+                                            <div class="text-3xl">⚛️</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Download Button -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20">
+                            <h3 class="text-xl font-bold text-white mb-4 font-poppins">Download</h3>
+                            
+                            <button id="downloadBtn" class="w-full group relative inline-flex items-center justify-center px-6 py-3 text-base font-semibold btn-primary rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none">
+                                <span class="relative z-10">📥 Download Portfolio</span>
+                                <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </div>
+
+                        <!-- Deploy Button -->
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20">
+                            <h3 class="text-xl font-bold text-white mb-4 font-poppins">Deploy Online</h3>
+                            
+                            <button id="deployBtn" class="w-full group relative inline-flex items-center justify-center px-6 py-3 text-base font-semibold btn-secondary rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none">
+                                <span class="relative z-10">🚀 Deploy Online</span>
+                                <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </div>
+
+                        <!-- Success Message -->
+                        <div class="rounded-xl p-4 bg-white/10 border border-white/20">
+                            <h5 class="text-white font-semibold mb-2 text-sm">✅ Portfolio Complete!</h5>
+                            <p class="text-gray-200 text-xs">
+                                Your professional portfolio is ready to download and deploy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Live Preview -->
+                    <div class="xl:col-span-2">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-xl font-bold text-white font-poppins">Live Portfolio Preview</h3>
+                                <div class="flex space-x-2">
+                                    <button id="desktopView" class="px-3 py-1 rounded-lg text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                                        🖥️ Desktop
+                                    </button>
+                                    <button id="tabletView" class="px-3 py-1 rounded-lg text-sm font-medium text-gray-300 hover:text-white">
+                                        📱 Tablet
+                                    </button>
+                                    <button id="mobileView" class="px-3 py-1 rounded-lg text-sm font-medium text-gray-300 hover:text-white">
+                                        📱 Mobile
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Preview Container -->
+                            <div id="previewContainer" class="bg-white rounded-2xl overflow-hidden shadow-2xl w-full">
+                                <div id="portfolioPreview" class="h-[800px] overflow-y-auto">
+                                    <!-- Portfolio content will be rendered here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12">
+                    <!-- Back Button -->
+                    <button id="backButton" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-gray-700 rounded-2xl hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
+                        <svg class="mr-3 w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span>Back to Preview</span>
+                    </button>
+
+                    <!-- Complete Button -->
+                    <button id="completeBtn" class="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-green-500/50">
+                        <span class="relative z-10">🎉 Complete</span>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                        <svg class="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="mt-8 flex justify-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedFormat = 'html';
+        let currentView = 'desktop';
+        let portfolioData = {};
+
+        // Theme gradients mapping
+        const themeGradients = {
+            'elegant-dark': 'from-slate-900 via-purple-900 to-slate-900',
+            'clean-light': 'from-white via-slate-100 to-white',
+            'monochrome': 'from-black via-neutral-900 to-black',
+            'tech-blue': 'from-blue-950 via-blue-800 to-blue-700',
+            'corporate-purple': 'from-purple-900 via-fuchsia-800 to-purple-700',
+            'executive-gray': 'from-gray-800 via-gray-700 to-gray-600',
+            'vibrant-sunset': 'from-orange-700 via-pink-700 to-rose-700',
+            'artistic-green': 'from-emerald-900 via-emerald-800 to-emerald-700',
+            'creative-mix': 'from-red-800 via-purple-800 to-pink-700'
+        };
+
+        function applyTheme() {
+            try {
+                const stored = localStorage.getItem('portfolioBuilderData');
+                const parsed = stored ? JSON.parse(stored) : null;
+                const themeId = (parsed && parsed.theme) || (new URLSearchParams(window.location.search).get('theme')) || 'elegant-dark';
+                
+                const container = document.getElementById('themeContainer');
+                const body = document.getElementById('themeBody');
+                
+                if (container) {
+                    container.className = container.className
+                        .replace(/from-[^\s]+/g, '')
+                        .replace(/via-[^\s]+/g, '')
+                        .replace(/to-[^\s]+/g, '');
+                    container.classList.add('bg-gradient-to-br');
+                    (themeGradients[themeId] || themeGradients['elegant-dark']).split(' ').forEach(c => container.classList.add(c));
+                }
+                
+                if (body) {
+                    body.className = (body.className || '').replace(/from-[^\s]+/g, '').replace(/via-[^\s]+/g, '').replace(/to-[^\s]+/g, '');
+                    (themeGradients[themeId] || themeGradients['elegant-dark']).split(' ').forEach(c => body.classList.add(c));
+                }
+            } catch (_) {}
+        }
+
+        function renderPortfolioPreview() {
+            const preview = document.getElementById('portfolioPreview');
+            if (!preview) return;
+
+            // Get theme colors for preview
+            const stored = localStorage.getItem('portfolioBuilderData');
+            const parsed = stored ? JSON.parse(stored) : null;
+            const themeId = (parsed && parsed.theme) || 'elegant-dark';
+            // Ensure sensible defaults so preview is never empty
+            portfolioData = {
+                profile: {
+                    fullName: 'Your Name',
+                    professionalTitle: 'Your Title',
+                    profileImage: '👤',
+                    ...(portfolioData.profile || {})
+                },
+                sections: Object.assign({
+                    about: true,
+                    skills: true,
+                    projects: true,
+                    experience: false,
+                    education: false,
+                    contact: true
+                }, portfolioData.sections || {}),
+                bio: portfolioData.bio || 'Your bio will appear here...'
+            };
+            
+            const themeColors = {
+                'elegant-dark': { bg: 'bg-gray-900', text: 'text-white', accent: 'text-purple-400' },
+                'clean-light': { bg: 'bg-white', text: 'text-gray-800', accent: 'text-blue-600' },
+                'monochrome': { bg: 'bg-black', text: 'text-white', accent: 'text-gray-400' },
+                'tech-blue': { bg: 'bg-blue-900', text: 'text-white', accent: 'text-blue-300' },
+                'corporate-purple': { bg: 'bg-purple-900', text: 'text-white', accent: 'text-purple-300' },
+                'executive-gray': { bg: 'bg-gray-800', text: 'text-white', accent: 'text-yellow-400' },
+                'vibrant-sunset': { bg: 'bg-orange-800', text: 'text-white', accent: 'text-pink-300' },
+                'artistic-green': { bg: 'bg-emerald-900', text: 'text-white', accent: 'text-emerald-300' },
+                'creative-mix': { bg: 'bg-red-900', text: 'text-white', accent: 'text-purple-300' }
+            };
+            
+            const colors = themeColors[themeId] || themeColors['elegant-dark'];
+
+            preview.innerHTML = `
+                <div class="${colors.bg} min-h-full">
+                    <!-- Header -->
+                    <header class="relative py-16 px-8 ${colors.bg === 'bg-white' ? 'bg-gray-50' : 'bg-gray-800'}">
+                        <div class="max-w-6xl mx-auto">
+                            <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
+                                <div class="flex-shrink-0">
+                                    <div class="w-32 h-32 rounded-full shadow-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-6xl text-white">
+                                        ${portfolioData.profile?.profileImage || '👤'}
+                                    </div>
+                                </div>
+                                <div class="text-center md:text-left">
+                                    <h1 class="text-5xl font-bold ${colors.text} mb-4 font-poppins">
+                                        ${portfolioData.profile?.fullName || 'Your Name'}
+                                    </h1>
+                                    <p class="text-2xl ${colors.text === 'text-white' ? 'text-gray-300' : 'text-gray-600'} mb-6">
+                                        ${portfolioData.profile?.professionalTitle || 'Your Title'}
+                                    </p>
+                                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                                        <button class="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold">
+                                            View My Work
+                                        </button>
+                                        <button class="px-4 py-2 border-2 border-purple-600 text-purple-600 rounded-xl font-semibold hover:bg-purple-600 hover:text-white">
+                                            Download Resume
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    ${portfolioData.sections?.about ? `
+                    <!-- About Section -->
+                    <section class="py-16 px-8 ${colors.bg === 'bg-white' ? 'bg-white' : 'bg-gray-800'}">
+                        <div class="max-w-4xl mx-auto">
+                            <h2 class="text-4xl font-bold ${colors.text} mb-8 text-center font-poppins">About Me</h2>
+                            <div class="prose prose-lg max-w-none ${colors.text === 'text-white' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed">
+                                <p>${portfolioData.bio || portfolioData.content?.bio || 'Your bio will appear here...'}</p>
+                            </div>
+                        </div>
+                    </section>
+                    ` : ''}
+
+                    ${portfolioData.sections?.skills ? `
+                    <!-- Skills Section -->
+                    <section class="py-16 px-8 ${colors.bg === 'bg-white' ? 'bg-gray-50' : 'bg-gray-700'}">
+                        <div class="max-w-6xl mx-auto">
+                            <h2 class="text-4xl font-bold ${colors.text} mb-12 text-center font-poppins">Skills & Technologies</h2>
+                            <div class="flex flex-wrap gap-4 justify-center">
+                                ${(portfolioData.skills || ['JavaScript', 'React', 'Node.js', 'Python']).map(skill => `
+                                    <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium shadow-lg">
+                                        ${skill}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                    ` : ''}
+
+                    ${portfolioData.sections?.projects ? `
+                    <!-- Projects Section -->
+                    <section class="py-16 px-8 ${colors.bg === 'bg-white' ? 'bg-white' : 'bg-gray-800'}">
+                        <div class="max-w-6xl mx-auto">
+                            <h2 class="text-4xl font-bold ${colors.text} mb-12 text-center font-poppins">Featured Projects</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                ${(portfolioData.projects || [
+                                    { name: 'Project 1', description: 'Amazing project description' },
+                                    { name: 'Project 2', description: 'Another great project' },
+                                    { name: 'Project 3', description: 'Third project showcase' }
+                                ]).map(project => `
+                                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                                        <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                                            <span class="text-6xl text-white">📱</span>
+                                        </div>
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-bold text-gray-800 mb-3">${project.name}</h3>
+                                            <p class="text-gray-600 mb-4">${project.description}</p>
+                                            <div class="flex gap-3">
+                                                <button class="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold">
+                                                    View Project
+                                                </button>
+                                                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold">
+                                                    GitHub
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                    ` : ''}
+
+                    ${portfolioData.sections?.contact ? `
+                    <!-- Contact Section -->
+                    <section class="py-16 px-8 ${colors.bg === 'bg-white' ? 'bg-gray-900' : 'bg-gray-900'} text-white">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <h2 class="text-4xl font-bold mb-8 font-poppins">Get In Touch</h2>
+                            <p class="text-xl text-gray-300 mb-12">
+                                Ready to work together? Let's create something amazing!
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                                ${portfolioData.contact?.email ? `
+                                    <a href="mailto:${portfolioData.contact.email}" class="flex items-center space-x-3 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300">
+                                        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                                            <span class="text-white text-lg">📧</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-300 text-sm">Email</p>
+                                            <p class="text-white font-medium">${portfolioData.contact.email}</p>
+                                        </div>
+                                    </a>
+                                ` : ''}
+
+                                ${portfolioData.contact?.linkedin ? `
+                                    <a href="${portfolioData.contact.linkedin}" target="_blank" class="flex items-center space-x-3 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300">
+                                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                            <span class="text-white text-lg">💼</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-300 text-sm">LinkedIn</p>
+                                            <p class="text-white font-medium">View Profile</p>
+                                        </div>
+                                    </a>
+                                ` : ''}
+
+                                ${portfolioData.contact?.github ? `
+                                    <a href="${portfolioData.contact.github}" target="_blank" class="flex items-center space-x-3 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300">
+                                        <div class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <span class="text-white text-lg">🐙</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-300 text-sm">GitHub</p>
+                                            <p class="text-white font-medium">View Profile</p>
+                                        </div>
+                                    </a>
+                                ` : ''}
+                            </div>
+
+                            <button class="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold">
+                                Send Message
+                            </button>
+                        </div>
+                    </section>
+                    ` : ''}
+
+                    <!-- Footer -->
+                    <footer class="${colors.bg === 'bg-white' ? 'bg-gray-800' : 'bg-gray-900'} text-white py-8 px-8">
+                        <div class="max-w-6xl mx-auto text-center">
+                            <p class="text-gray-400">
+                                © 2024 ${portfolioData.profile?.fullName || 'Your Name'}. Built with ❤️ using our Portfolio Builder.
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        function updatePreviewSize() {
+            const container = document.getElementById('previewContainer');
+            const preview = document.getElementById('portfolioPreview');
+            
+            if (currentView === 'desktop') {
+                container.className = 'bg-white rounded-2xl overflow-hidden shadow-2xl w-full';
+                preview.className = 'h-[800px] overflow-y-auto';
+            } else if (currentView === 'tablet') {
+                container.className = 'bg-white rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto';
+                preview.className = 'h-[640px] overflow-y-auto';
+            } else {
+                container.className = 'bg-white rounded-2xl overflow-hidden shadow-2xl max-w-sm mx-auto';
+                preview.className = 'h-[480px] overflow-y-auto';
+            }
+        }
+
+        function updateViewButtons() {
+            const buttons = ['desktopView', 'tabletView', 'mobileView'];
+            buttons.forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                if (btnId === currentView + 'View') {
+                    btn.className = 'px-3 py-1 rounded-lg text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white';
+                } else {
+                    btn.className = 'px-3 py-1 rounded-lg text-sm font-medium text-gray-300 hover:text-white';
+                }
+            });
+        }
+
+        function downloadPortfolio() {
+            // Create a simple HTML file
+            const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${portfolioData.profile?.fullName || 'Your Name'} - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter">
+    <!-- Your portfolio content here -->
+    <div class="min-h-screen bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-16">
+            <h1 class="text-4xl font-bold text-center mb-8">${portfolioData.profile?.fullName || 'Your Name'}</h1>
+            <p class="text-xl text-center text-gray-300 mb-12">${portfolioData.profile?.professionalTitle || 'Your Title'}</p>
+            
+            ${portfolioData.bio ? `
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold mb-4">About Me</h2>
+                <p class="text-gray-300 leading-relaxed">${portfolioData.bio}</p>
+            </div>
+            ` : ''}
+            
+            <div class="text-center mt-16">
+                <p class="text-gray-400">Built with ❤️ using Portfolio Builder</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${portfolioData.profile?.fullName?.toLowerCase().replace(/\s+/g, '-') || 'portfolio'}-portfolio.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load portfolio data
+            try {
+                const stored = localStorage.getItem('portfolioBuilderData');
+                const parsed = stored ? JSON.parse(stored) : null;
+                portfolioData = parsed || {};
+                
+                // Also try to load from URL params
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataParam = urlParams.get('data');
+                if (dataParam) {
+                    const urlData = JSON.parse(decodeURIComponent(dataParam));
+                    portfolioData = { ...portfolioData, ...urlData };
+                }
+                // Ensure profile exists from localStorage
+                if (parsed && parsed.profile) {
+                    portfolioData.profile = { ...(portfolioData.profile || {}), ...parsed.profile };
+                }
+                // Also overlay other data from localStorage
+                if (parsed && parsed.bio) portfolioData.bio = parsed.bio;
+                if (parsed && parsed.skills) portfolioData.skills = parsed.skills;
+                if (parsed && parsed.projects) portfolioData.projects = parsed.projects;
+                if (parsed && parsed.experience) portfolioData.experience = parsed.experience;
+                if (parsed && parsed.education) portfolioData.education = parsed.education;
+                console.log('Raw localStorage data in code generation:', parsed);
+                console.log('Final portfolio data in code generation:', portfolioData);
+            } catch (error) {
+                console.error('Error loading portfolio data:', error);
+            }
+            
+            // Render initial preview
+            renderPortfolioPreview();
+            updatePreviewSize();
+            updateViewButtons();
+
+            // Format selection
+            document.getElementById('htmlFormat').addEventListener('click', function() {
+                selectedFormat = 'html';
+                document.getElementById('htmlFormat').querySelector('.border-2').className = 'border-2 border-green-500 shadow-green-500/25';
+                document.getElementById('reactFormat').querySelector('.border-2').className = 'border-2 border-gray-200 hover:border-gray-400';
+            });
+
+            document.getElementById('reactFormat').addEventListener('click', function() {
+                selectedFormat = 'react';
+                document.getElementById('reactFormat').querySelector('.border-2').className = 'border-2 border-green-500 shadow-green-500/25';
+                document.getElementById('htmlFormat').querySelector('.border-2').className = 'border-2 border-gray-200 hover:border-gray-400';
+            });
+
+            // View toggles
+            document.getElementById('desktopView').addEventListener('click', function() {
+                currentView = 'desktop';
+                updatePreviewSize();
+                updateViewButtons();
+            });
+
+            document.getElementById('tabletView').addEventListener('click', function() {
+                currentView = 'tablet';
+                updatePreviewSize();
+                updateViewButtons();
+            });
+
+            document.getElementById('mobileView').addEventListener('click', function() {
+                currentView = 'mobile';
+                updatePreviewSize();
+                updateViewButtons();
+            });
+
+            // Download button
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                downloadPortfolio();
+            });
+
+            // Deploy button
+            document.getElementById('deployBtn').addEventListener('click', function() {
+                alert('Deployment feature coming soon! For now, download the files and deploy manually.');
+            });
+
+            // Navigation
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'final-review.html';
+            });
+
+            document.getElementById('completeBtn').addEventListener('click', function() {
+                alert('Portfolio generation complete! Your professional portfolio is ready to use.');
+            });
+        });
+    </script>
+</body>
+</html>
