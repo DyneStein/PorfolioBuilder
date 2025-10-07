@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Static HTML deployment - no build needed'",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/Portfolio_Builder/(.*)",
+      "dest": "/Portfolio_Builder/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Portfolio_Builder/$1"
+    }
+  ]
+}

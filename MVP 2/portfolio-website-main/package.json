@@ -6,9 +6,10 @@
     "scripts": {
         "dev": "vite",
         "host": "vite --host 0.0.0.0",
-        "build": "vite build",
+        "build": "echo 'Static HTML build - no build step needed'",
         "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "vercel-build": "echo 'Static HTML deployment - no build step needed'"
     },
     "dependencies": {
         "@studio-freight/lenis": "^1.0.13",
